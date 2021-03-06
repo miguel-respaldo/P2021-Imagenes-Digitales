@@ -9,7 +9,6 @@ if not camara.isOpened():
 while True:
     # Leemos la imagen de la camara
     ret, imagen = camara.read()
-    ret, imagenflip=camara.read()
 
     if not ret:
         print("No podemos capturar la imagen de la camara")
