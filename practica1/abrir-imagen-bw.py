@@ -1,6 +1,6 @@
 import cv2 as cv
 
-img = cv.imread("../imagenes/lenna.jpg", 0)
+img = cv.imread("../imagenes/lenna.jpg", cv.IMREAD_GRAYSCALE)
 
 cv.imshow("Lenna", img)
 
