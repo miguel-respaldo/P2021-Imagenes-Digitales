@@ -14,6 +14,10 @@ while True:
         print("No podemos capturar la imagen de la camara")
         break
     imagenflip = cv.flip(imagen, 0)
+    # 0 de cabeza
+    # 1 espejo
+    # -1 cabeza espejo
+
     cv.imshow("Camara flip", imagenflip)
     cv.imshow("Camara", imagen)
 
