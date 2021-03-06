@@ -9,3 +9,4 @@ while True:
     if k == 27: # 27 es el escape (ESC)
         break
 
+cv.destroyAllWindows()
