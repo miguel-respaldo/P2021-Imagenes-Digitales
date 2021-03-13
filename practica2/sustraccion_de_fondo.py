@@ -1,8 +1,8 @@
 import cv2 as cv
 
 
-backSub = cv.createBackgroundSubtractorMOG2()
-# backSub = cv.createBackgroundSubtractorKNN()
+#backSub = cv.createBackgroundSubtractorMOG2()
+backSub = cv.createBackgroundSubtractorKNN()
 
 capture = cv.VideoCapture(0)
 
