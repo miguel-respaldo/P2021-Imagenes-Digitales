@@ -23,3 +23,9 @@ while True:
         x,y = i.ravel()
         cv.circle(imagen,(x,y),3,255,-1)
     cv.imshow("Camara", imagen)
+
+    if cv.waitKey(1) == 27:
+        break
+
+camara.release()
+cv.destroyAllWindows()
