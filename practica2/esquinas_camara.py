@@ -17,12 +17,15 @@ while True:
         break
     gray = cv.cvtColor(imagen,cv.COLOR_BGR2GRAY)
     corners= cv.goodFeaturesToTrack(gray,25,0.01,10)
-    corners = np.int0(corners)
 
-    for i in corners:
-        x,y = i.ravel()
-        cv.circle(imagen,(x,y),3,255,-1)
-    cv.imshow("Camara", imagen)
+    if corners is not None:
+        corners = np.int0(corners)
+
+        for i in corners:
+            x,y = i.ravel()
+            cv.circle(gray,(x,y),3,(0,0,255),-1)
+
+    cv.imshow("Camara", gray)
 
     if cv.waitKey(1) == 27:
         break
