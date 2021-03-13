@@ -19,7 +19,7 @@ while True:
 
     cv.imshow("Camara", imagen)
 
-    cv.imshow("Camara", canny)
+    cv.imshow("Camara 2", canny)
 
     if cv.waitKey(1) == 27:
         break
