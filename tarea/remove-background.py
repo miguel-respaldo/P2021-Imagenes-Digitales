@@ -44,7 +44,8 @@ while ret:
     if ret == True:        # Convert image to grayscale
         image_gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)        # Apply Canny Edge Dection
         edges = cv.Canny(image_gray, canny_low, canny_high)
-
+        edges = cv.dilate(edges, None)
+        edges = cv.erode(edges, None)
     cv.imshow('Original', frame)
     cv.imshow('Procesada', edges)
 
