@@ -10,8 +10,8 @@ canny_low = 15
 canny_high = 150
 min_area = 0.0005
 max_area = 0.95
-dilate_iter = 10
-erode_iter = 10
+mask_dilate_iter = 10
+mask_erode_iter = 10
 mask_color = (0.0,0.0,0.0)
 
 capture = cv.VideoCapture(0)
@@ -71,9 +71,9 @@ while ret:
             mask = cv.fillConvexPoly(mask, contour[0], (255))
 
     # use dilate, erode, and blur to smooth out the mask
-    mask = cv2.dilate(mask, None, iterations=mask_dilate_iter)
-    mask = cv2.erode(mask, None, iterations=mask_erode_iter)
-    mask = cv2.GaussianBlur(mask, (blur, blur), 0)
+    mask = cv.dilate(mask, None, iterations=mask_dilate_iter)
+    mask = cv.erode(mask, None, iterations=mask_erode_iter)
+    mask = cv.GaussianBlur(mask, (blur, blur), 0)
 
     cv.imshow('Original', frame)
     cv.imshow('Procesada', edges)
