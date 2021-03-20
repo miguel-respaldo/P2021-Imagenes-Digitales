@@ -24,6 +24,8 @@ fondo = cv.imread("chapala.webp")
 
 ret, frame = capture.read()
 
+#frame = cv.imread("../imagenes/lenna.jpg")
+
 if frame is None:
     exit()
 
@@ -37,7 +39,7 @@ fondo = cv.resize(fondo,dsize)
 
 while ret:
     ret, frame = capture.read()
-
+    #ret = True
     if ret != True:        # Convert image to grayscale
         break
 
@@ -50,8 +52,6 @@ while ret:
     edges = cv.dilate(edges, None)
     edges = cv.erode(edges, None)
 
-    contour_info = [(c, cv.contourArea(c),) for c in cv.findContours(edges, cv.RETR_LIST, cv.CHAIN_APPROX_NONE)[1]]
-
     # Get the area of the image as a comparison
     image_area = frame.shape[0] * frame.shape[1]
 
@@ -61,6 +61,15 @@ while ret:
 
     # Set up mask with a matrix of 0's
     mask = np.zeros(edges.shape, dtype = np.uint8)
+
+    contour_info = [(c, cv.contourArea(c),) for c in cv.findContours(edges, cv.RETR_LIST, cv.CHAIN_APPROX_NONE)[0]]
+
+    # Go through and find relevant contours and apply to mask
+    for contour in contour_info:  # Instead of worrying about all the smaller contours, if the area is smaller than the min, the loop will break
+        if contour[1] > min_area and contour[1] < max_area:
+            # Add contour to mask
+            mask = cv.fillConvexPoly(mask, contour[0], (255))
+
 
     cv.imshow('Original', frame)
     cv.imshow('Procesada', edges)
