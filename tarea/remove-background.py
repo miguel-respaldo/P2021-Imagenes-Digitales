@@ -54,6 +54,6 @@ while ret:
 
         contour_info = [(c, cv.contourArea(c),) for c in cv.findContours(edges, cv.RETR_LIST, cv.CHAIN_APPROX_NONE)[1]]
 
-keyboard = cv.waitKey(30)
+    keyboard = cv.waitKey(30)
     if keyboard == 'q' or keyboard == 27:
         break
