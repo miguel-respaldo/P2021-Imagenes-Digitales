@@ -3,7 +3,8 @@ import cv2 as cv
 #backSub = cv.createBackgroundSubtractorMOG2()
 backSub = cv.createBackgroundSubtractorKNN()
 
-capture = cv.VideoCapture("/dev/video2")
+#capture = cv.VideoCapture("/dev/video2")
+capture = cv.VideoCapture(0)
 
 if not capture.isOpened():
     print("No puedo abrir la camara")
