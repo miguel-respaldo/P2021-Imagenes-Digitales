@@ -8,8 +8,8 @@ import numpy as np
 blur = 21
 canny_low = 15
 canny_high = 150
-min_area = 0.0005
-max_area = 0.95
+min_area = 20
+max_area = 100
 mask_dilate_iter = 10
 mask_erode_iter = 10
 mask_color = (0.0,0.0,0.0)
@@ -69,6 +69,7 @@ while ret:
         if contour[1] > min_area and contour[1] < max_area:
             # Add contour to mask
             mask = cv.fillConvexPoly(mask, contour[0], (255,0,0))
+
 
     # use dilate, erode, and blur to smooth out the mask
     mask = cv.dilate(mask, None, iterations=mask_dilate_iter)
