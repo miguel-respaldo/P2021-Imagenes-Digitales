@@ -46,13 +46,13 @@ while ret:
         image_gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)        # Apply Canny Edge Dection
         edges = cv.Canny(image_gray, canny_low, canny_high)
 
-        cv.imshow('Original', frame)
-        cv.imshow('Procesada', edges)
-
         edges = cv.dilate(edges, None)
         edges = cv.erode(edges, None)
 
         contour_info = [(c, cv.contourArea(c),) for c in cv.findContours(edges, cv.RETR_LIST, cv.CHAIN_APPROX_NONE)[1]]
+
+        cv.imshow('Original', frame)
+        cv.imshow('Procesada', edges)
 
     keyboard = cv.waitKey(30)
     if keyboard == 'q' or keyboard == 27:
