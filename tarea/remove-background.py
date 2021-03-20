@@ -45,8 +45,8 @@ while ret:
         image_gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)        # Apply Canny Edge Dection
         edges = cv.Canny(image_gray, canny_low, canny_high)
 
-   cv.imshow('Original', frame)
-   cv.imshow('Procesada', edges)
+    cv.imshow('Original', frame)
+    cv.imshow('Procesada', edges)
 
     keyboard = cv.waitKey(30)
     if keyboard == 'q' or keyboard == 27:
