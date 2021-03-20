@@ -77,7 +77,7 @@ while ret:
 
     cv.imshow('Original', frame)
     cv.imshow('Procesada', edges)
-    cv.imshow('Procesada', mask)
+    cv.imshow('Mascara', mask)
 
     keyboard = cv.waitKey(30)
     if keyboard == 'q' or keyboard == 27:
