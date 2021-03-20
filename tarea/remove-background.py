@@ -13,7 +13,6 @@ dilate_iter = 10
 erode_iter = 10
 mask_color = (0.0,0.0,0.0)
 
-#capture = cv.VideoCapture("/dev/video2")
 capture = cv.VideoCapture(0)
 
 if not capture.isOpened():
@@ -26,6 +25,8 @@ ret, frame = capture.read()
 
 if frame is None:
     exit()
+
+
 
 # Redimencionamos el fondo al tamañano de la imagen capturada
 width  = frame.shape[1]
@@ -44,11 +45,15 @@ while ret:
     if ret == True:        # Convert image to grayscale
         image_gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)        # Apply Canny Edge Dection
         edges = cv.Canny(image_gray, canny_low, canny_high)
+
+        cv.imshow('Original', frame)
+        cv.imshow('Procesada', edges)
+
         edges = cv.dilate(edges, None)
         edges = cv.erode(edges, None)
-    cv.imshow('Original', frame)
-    cv.imshow('Procesada', edges)
 
-    keyboard = cv.waitKey(30)
+        contour_info = [(c, cv.contourArea(c),) for c in cv.findContours(edges, cv.RETR_LIST, cv.CHAIN_APPROX_NONE)[1]]
+
+keyboard = cv.waitKey(30)
     if keyboard == 'q' or keyboard == 27:
         break
