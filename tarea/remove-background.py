@@ -70,9 +70,14 @@ while ret:
             # Add contour to mask
             mask = cv.fillConvexPoly(mask, contour[0], (255))
 
+    # use dilate, erode, and blur to smooth out the mask
+    mask = cv2.dilate(mask, None, iterations=mask_dilate_iter)
+    mask = cv2.erode(mask, None, iterations=mask_erode_iter)
+    mask = cv2.GaussianBlur(mask, (blur, blur), 0)
 
     cv.imshow('Original', frame)
     cv.imshow('Procesada', edges)
+    cv.imshow('Procesada', mask)
 
     keyboard = cv.waitKey(30)
     if keyboard == 'q' or keyboard == 27:
