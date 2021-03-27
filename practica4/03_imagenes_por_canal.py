@@ -15,7 +15,7 @@ while True:
         break
 
     # Separar los canales en RGB
-    b,g,r = cv.split(img)
+    b,g,r = cv.split(imagen)
 
     cv.imshow("Azul",b)
     cv.imshow("Verde",g)
