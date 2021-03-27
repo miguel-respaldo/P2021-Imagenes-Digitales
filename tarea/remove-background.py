@@ -66,10 +66,10 @@ while ret:
 
     # Go through and find relevant contours and apply to mask
     for contour in contour_info:  # Instead of worrying about all the smaller contours, if the area is smaller than the min, the loop will break
-        if contour[1] > min_area and contour[1] < max_area:
+        #if contour[1] > min_area and contour[1] < max_area:
             # Add contour to mask
-            mask = cv.fillConvexPoly(mask, contour[0], (255,0,0))
-
+        mask = cv.fillConvexPoly(mask, contour[0], (255,0,0))
+        print(contour[1])
 
     # use dilate, erode, and blur to smooth out the mask
     mask = cv.dilate(mask, None, iterations=mask_dilate_iter)
