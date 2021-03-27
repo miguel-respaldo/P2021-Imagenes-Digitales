@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-camara = cv.VideoCapture('/dev/video2')
+camara = cv.VideoCapture(0)
 
 if not camara.isOpened():
     print("No puedo abrir la camara")
