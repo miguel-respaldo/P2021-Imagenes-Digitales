@@ -18,19 +18,21 @@ height = imagen.shape[0]
 dsize = (width, height)
 
 fondo = cv.resize(fondo,dsize)
-fondo = cv.rotate(fondo,cv.ROTATE_90_COUNTERCLOCKWISE,dst=None)
+
 while ret:
     # Leemos la imagen de la camara
     ret, imagen = camara.read()
+
+    Rotar = cv.rotate(imagen, cv.ROTATE_90_COUNTERCLOCKWISE, dst=None)
 
     if not ret:
         print("No podemos capturar la imagen de la camara")
         break
 
-    suma = cv.addWeighted(imagen, 0.9, fondo,0.2, 0)
-
+    suma = cv.addWeighted(imagen, 0.9, fondo, 0.2, 0)
     cv.imshow("Chapala", suma)
-
+    cv.imshow("Rotando", Rotar)
+    
     if cv.waitKey(1) == 27:
         break
 
