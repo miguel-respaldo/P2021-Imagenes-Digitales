@@ -7,7 +7,7 @@ if not camara.isOpened():
     print("No puedo abrir la camara")
     exit(1)
 
- ret, imagen = camara.read()
+ret, imagen = camara.read()
 
 fondo = cv.imread("../tarea/chapala.webp")
 # Redimencionamos el fondo al tamañano de la imagen capturada
